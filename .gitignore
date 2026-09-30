@@ -1,2 +1,12 @@
 .config/gh/hosts.yml
 .config/gh/hosts.yml
+.cache/
+.config/
+.landscape/
+.bash_history
+.bash_logout
+.bashrc
+.gitconfig
+.lesshst
+.motd_shown
+.profile

@@ -2,27 +2,34 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
                 echo 'Building application...'
+                sh 'python3 -m py_compile app.py'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing application...'
                 sh 'python3 app.py'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+                echo 'Application deployed successfully!'
             }
         }
     }
 
     post {
         success {
-            echo 'Build completed successfully!'
+            echo 'CI/CD Pipeline completed successfully!'
         }
-
         failure {
-            echo 'Build failed!'
+            echo 'CI/CD Pipeline failed!'
         }
     }
 }
